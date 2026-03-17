@@ -26,14 +26,39 @@ module "eks" {
 
   addons = {
     coredns                = {}
-    eks-pod-identity-agent = {
-      before_compute = true
-    }
+    eks-pod-identity-agent = {before_compute = true}
     kube-proxy             = {}
-    vpc-cni                = {
-      before_compute = true
+    vpc-cni                = {before_compute = true}
+  }
+}
+
+# ebs_csi_driver required for Prometheus to use EBS volumes for persistent storage
+module "ebs_csi_pod_identity" {
+  source  = "terraform-aws-modules/eks-pod-identity/aws"
+  version = "~> 1.0"
+
+  name                   = "${local.cluster_name}-ebs-csi"
+  attach_aws_ebs_csi_policy = true
+
+  associations = {
+    this = {
+      cluster_name    = module.eks.cluster_name
+      namespace       = "kube-system"
+      service_account = "ebs-csi-controller-sa"
     }
   }
+
+  tags = var.tags
+}
+
+resource "aws_eks_addon" "ebs_csi_driver" {
+  cluster_name = module.eks.cluster_name
+  addon_name   = "aws-ebs-csi-driver"
+
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
+
+  depends_on = [module.eks]
 }
 
 # =============================================================================

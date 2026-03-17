@@ -24,25 +24,7 @@ Cluster creation is performed by calling a local module 'aws/eks_cluster', which
 
 _Currently working through the `terraform plan` 'chicken and egg' of having to have the Custom Resource Definitions already installed in order for `plan` to evaluate the supporting helm manifests that will configure ESO and grafana._
 
-_This can be brute forced with multiple  plan/apply passes, but a cleaner solution is desired._
-
-### Prometheus
-
-Installed and configured via modules/aws/eks_cluster/helm.prometheus.tf
-
-### Grafana
-
-Installed and configured via modules/aws/eks_cluster/helm.grafana.tf
-
-_[add example access link to grafana web interface -- add a script to plumb it for direct cluster access (more secure) via a local URL querym or additional infrastructure to reach it via load balancer (an option used to expose dashboards to a larger audience)]_
-
-### Thanos/S3 -- _TODO_
-
-Thanos provides long term metrics storage in S3, allowing metrics analysis against long term historical performance.
-
-### Karpenter -- _TODO_
-
-_(A reach objective integration example - scaling sufficiently to demonstrate may be somewhat more expensive.)_
+The pragmatic solution here it to address the ordering problem by moving observability to a separate **eks-observability** terraform subset, to be applied after the cluster is initially created, rather than attempting to overload the initial cluster creation, and to create a supporting eks_monitoring module.
 
 ## Cost Comparisons of different EKS deployment models
 
@@ -62,7 +44,7 @@ Ideally, implementing Karpenter to provide horizontal node-level autoscaling to 
 - Monthly control plane cost per cluster ($0.10/hour. ~$73/month)
 - per-vCPU and per-GB memory costs consumed (generally 2-4x those costs in EC2)
 
-Often considerably more expensive for persistant, predicatable loads, but the Fargate model eliminates idle-time overhead costs, so may be cost effective for short, burstable, low volume pods.
+Often considerably more expensive for persistent, predictable loads, but the Fargate model eliminates idle-time overhead costs, so may be cost effective for short, burstable, low volume pods.
 
 ### Auto-mode
 

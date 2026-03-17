@@ -3,10 +3,10 @@
 #       :: mdunbar :: 2026 Feb 21 :: MIT License © 2025 Matthew Dunbar ::
 # =============================================================================
 locals {
-  environment = "dev"
-  cluster_label = "demo"
+  environment           = "dev"
+  cluster_label         = "demo"
   source_ipam_pool_name = "dev_private_cidr"
-  region = "us-east-1"
+  region                = "us-east-1"
 
   eks_managed_node_groups = {
     demo = {
