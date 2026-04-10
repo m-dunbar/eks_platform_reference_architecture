@@ -1,4 +1,4 @@
-# Elastic Kubernetes Service (EKS) -- _**in progress**_
+# Elastic Kubernetes Service (EKS)
 
 Amazon EKS is Amazon's managed, certified Kubernetes (K8S) service offering, running standard K8S clusters while managing the K8S control plane.
 
@@ -8,9 +8,15 @@ Standard cluster management tools (`kubectl`, `helm`) can then be used to manage
 
 Deployments can proceed using `kubectl deploy`, `terraform apply`, or CI/CD pipeline.
 
-## EKS Cluster
+In this example, EKS implementation is broken into multiple stages, corresponding to different Terraform apply passes, modeling different layers of requirements and dependencies, in order.
 
-Cluster creation is performed by calling a local module 'aws/eks_cluster', which includes standardized configuration elements (example: a monitoring namespace), and adding and configuring supporting observability components (prometheus, grafana).
+## EKS Cluster Creation (10.eks)
+
+Initial cluster creation is performed by calling a local module 'aws/eks_cluster', which includes standardized baseline configuration elements.
+
+## EKS Cluster-level Configuration (11.eks_config)
+
+Implements default storage type (gp3), and namespace (monitoring).
 
 ## Application Stack -- TODO
 
@@ -20,11 +26,13 @@ Cluster creation is performed by calling a local module 'aws/eks_cluster', which
 
 **External Secrets Operator (ESO)** [chart: external-secrets] -- populates Kubernetes Secrets from AWS Secrets Manager
 
-## Observability -- _in progress_
+## Observability (#.eks-observability) -- _in progress_
 
-_Currently working through the `terraform plan` 'chicken and egg' of having to have the Custom Resource Definitions already installed in order for `plan` to evaluate the supporting helm manifests that will configure ESO and grafana._
+_**Please Note:** Currently working through the `terraform plan` 'chicken and egg' of having to have the Custom Resource Definitions already installed in order for `plan` to evaluate the supporting helm manifests that will configure ESO and grafana._
 
-The pragmatic solution here it to address the ordering problem by moving observability to a separate **eks-observability** terraform subset, to be applied after the cluster is initially created, rather than attempting to overload the initial cluster creation, and to create a supporting eks_monitoring module.
+The pragmatic solution here it to address the ordering problem by moving observability to a separate **11.eks-config**, and **#.eks-observability** terraform subsets, to be applied after the cluster is initially created, rather than attempting to overload the initial cluster creation, and to create a supporting eks_monitoring module.
+
+Observability should be added following the addition of application workloads to be supported.  This can be performed via pure K8S yaml and kubectl, minikube or your preferred tooling if the created cluster is added to your .kube/config, or via one or more sets of supporting terraform.  (Hence, the current '#.' in the eks-observability subdirectory name.)
 
 ## Cost Comparisons of different EKS deployment models
 

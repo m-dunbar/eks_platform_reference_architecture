@@ -1,4 +1,4 @@
-# Localstack
+# LocalStack
 
 LocalStack is an open-source cloud service emulator designed to run a comprehensive suite of AWS services locally. This enables developers to build, test, and iterate on cloud applications without the need to connect to remote cloud providers. It operates in a single container, making it suitable for local development environments and continuous integration (CI) workflows.  ￼
 
@@ -39,3 +39,11 @@ Deployment and manamgent scripts are provided in the top-level directory of the 
 These use the included `localstack.deployment.yaml` to provision a local instance.
 
 PLEASE NOTE: that the free tier of localstack does not provide persistance within the simulated local AWS environmnet, nor fully functional modeling of all services.  It does, however, allow for more robust initial testing of terraform HCL against the running localstack.
+
+## Caveats
+
+LocalStack provides an interesting set of tooling, with lots of potential, but in practice for many of teh more complex services where local Proof-of-Conecpt modeling would be most useful (EKS, for instance), the stack only _simulates_ deployment, mostly acting as a syntax linter.
+
+That being the case, it's actual usefulness is mixed.  It was an interesting rabbit hole to explore, but it's very much as case where for your individual stacks _'Your Milage **Will** Vary' (YMWV)_.
+
+Experiment for yourself.  See what you think.

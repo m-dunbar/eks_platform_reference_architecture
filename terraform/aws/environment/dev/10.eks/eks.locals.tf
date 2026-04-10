@@ -15,6 +15,14 @@ locals {
       min_size       = 1
       max_size       = 3
       instance_types = ["t3.large"] # medium appears to be the smallest viable node size - increase as needed
+      labels = {
+        "app.kubernetes.io/component"  = "node"
+        "app.kubernetes.io/part-of"    = local.cluster_label
+        "topology.kubernetes.io/zone"  = local.region
+        environment                    = local.environment
+        managed_by                     = "terraform"
+        role                           = "system"
+      }
     }
   }
 

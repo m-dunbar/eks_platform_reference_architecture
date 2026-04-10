@@ -119,6 +119,10 @@ Auth0 provides centralized user management, allowing implementation and manageme
 - add migration of auth0 tfstate to an S3 backend
 - complete automation of sending 'password reset' email for new users (currently, that would be done via the Auth0 console UI)
 
+## Caveats
+
+Please note the ToDo list.  The current implementation is not yet complete, nor will it yet fully integrate for comprehensive RBAC support.  Currently, AWS-specific terraform examples found elsewhere within the terraform_integration_templates repo will need to be applied using a suitable role with Admin level permissions.
+
 ---
 
 © 2025 Matthew Dunbar  
