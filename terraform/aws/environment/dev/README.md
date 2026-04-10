@@ -14,7 +14,7 @@ While any of the terraform contained herein may be manually applied, a Makefile 
 
 ## Further reading
 
-Please see Hashicorp's documentation for further information if any of this is unclear.
+Please see Hashicorp's [Terraform documentation on S3 State Storage, State Locking and lockfiles](https://developer.hashicorp.com/terraform/language/backend/s3) and for further information if any of this is unclear.
 
 ---
 
