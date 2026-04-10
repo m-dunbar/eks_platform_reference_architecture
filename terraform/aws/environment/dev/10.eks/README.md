@@ -36,6 +36,7 @@ Observability should be added following the addition of application workloads to
 
 ## Cost Comparisons of different EKS deployment models
 
+<!-- markdownlint-disable-next-line MD036>
 _(Very basic overview.  Expand later.)_
 
 ### EKS Managed Node Group -- the model implemented here
