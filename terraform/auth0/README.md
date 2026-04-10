@@ -104,7 +104,7 @@ The environment prefix allows for environment-level granularity, as developers o
 
 Within the respective AWS account(s), those would map directly to:
 
-- Admonistrators
+- Administrators
 - Developers
 - ReadOnly
 
