@@ -1,0 +1,23 @@
+- title: Overview
+  url: /docs/
+
+- title: Architecture
+  url: /docs/architecture
+
+- title: Infrastructure (Build Plane)
+  url: /docs/infrastructure
+
+- title: Platform (Runtime Plane)
+  url: /docs/platform
+
+- title: Workloads
+  url: /docs/workloads
+
+- title: Observability
+  url: /docs/observability
+
+- title: GitOps / Delivery
+  url: /docs/gitops
+
+- title: Design Principles
+  url: /docs/principles

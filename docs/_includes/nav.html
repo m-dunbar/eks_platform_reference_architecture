@@ -1,0 +1,13 @@
+<nav class="sidebar">
+  <div class="nav-title">EKS Platform Docs</div>
+
+  <ul class="nav-list">
+    {% for item in site.data.navigation %}
+      <li class="nav-item">
+        <a href="{{ item.url | relative_url }}">
+          {{ item.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
