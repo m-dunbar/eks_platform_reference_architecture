@@ -1,8 +1,38 @@
 title: EKS Platform Reference Architecture
+description: Reference architecture for EKS-based platform design
+url: "https://m-dunbar.github.io"
+baseurl: "/eks_platform_reference_architecture"
+minimal_mistakes_skin: "air"
+breadcrumbs: true
 
-theme: minima
+remote_theme: mmistakes/minimal-mistakes
 
 markdown: kramdown
+
+plugins:
+  - jekyll-include-cache
+
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: single
+      toc: true
+      toc_sticky: true
+      author_profile: false
+      sidebar:
+        nav: "docs"
+
+  - scope:
+      path: ""
+    values:
+      layout: single
 
 exclude:
   - README.md
