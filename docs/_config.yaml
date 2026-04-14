@@ -15,7 +15,6 @@ plugins:
 defaults:
   - scope:
       path: ""
-      type: docs
     values:
       layout: single
       toc: true
