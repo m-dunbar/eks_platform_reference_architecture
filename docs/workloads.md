@@ -1,8 +1,7 @@
 ---
 layout: single
+title: Workloads Model (Execution Domain)
 ---
-
-# Workloads Model (Execution Domain)
 
 ## Purpose
 

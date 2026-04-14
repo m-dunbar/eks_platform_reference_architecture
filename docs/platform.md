@@ -1,8 +1,7 @@
 ---
 layout: single
+title: Platform Model (Runtime Domain)
 ---
-
-# Platform Model (Runtime Domain)
 
 ## Purpose
 

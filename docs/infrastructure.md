@@ -1,8 +1,8 @@
 ---
 layout: single
----
+title: Infrastructure Model (Build Domain)
 
-# Infrastructure Model (Build Domain)
+---
 
 ## Purpose
 

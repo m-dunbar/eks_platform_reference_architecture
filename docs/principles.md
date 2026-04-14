@@ -1,8 +1,8 @@
 ---
 layout: single
----
+title: Platform Engineering Principles (System Invariants)
 
-# Platform Engineering Principles (System Invariants)
+---
 
 ## Purpose
 

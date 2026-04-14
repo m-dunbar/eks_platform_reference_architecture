@@ -1,8 +1,8 @@
 ---
 layout: single
----
+title: GitOps Model (Delivery Domain)
 
-# GitOps Model (Delivery Domain)
+---
 
 ## Purpose
 

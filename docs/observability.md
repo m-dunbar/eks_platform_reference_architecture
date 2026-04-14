@@ -1,8 +1,8 @@
 ---
 layout: single
----
+title: Observability Model (Cross-Cutting Domain)
 
-# Observability Model (Cross-Cutting Domain)
+---
 
 ## Purpose
 

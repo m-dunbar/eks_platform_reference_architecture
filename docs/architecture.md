@@ -1,9 +1,8 @@
 ---
 layout: single
-title: 
----
+title: Architecture Model Specification
 
-# Architecture Model Specification
+---
 
 ## Purpose
 
